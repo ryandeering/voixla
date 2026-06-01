@@ -2,20 +2,14 @@ using Microsoft.Extensions.Options;
 
 namespace Voixla.Api;
 
-public sealed class CacheJanitor : BackgroundService
+public sealed class CacheJanitor(IOptions<PiperOptions> opts, ILogger<CacheJanitor> log) : BackgroundService
 {
     private static readonly TimeSpan SweepInterval = TimeSpan.FromMinutes(5);
 
     private const int SidecarRetentionMultiplier = 8;
 
-    private readonly PiperOptions _opts;
-    private readonly ILogger<CacheJanitor> _log;
-
-    public CacheJanitor(IOptions<PiperOptions> opts, ILogger<CacheJanitor> log)
-    {
-        _opts = opts.Value;
-        _log = log;
-    }
+    private readonly PiperOptions _opts = opts.Value;
+    private readonly ILogger<CacheJanitor> _log = log;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {

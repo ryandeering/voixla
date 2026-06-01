@@ -9,4 +9,8 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="piper_server.py" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

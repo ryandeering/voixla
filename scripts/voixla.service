@@ -18,7 +18,7 @@ User=pi
 WorkingDirectory=/home/pi/voixla/publish
 ExecStart=/home/pi/voixla/publish/Voixla.Api --urls http://0.0.0.0:5005
 Environment=ASPNETCORE_ENVIRONMENT=Production
-Environment=Piper__ExecutablePath=/home/pi/voixla/.venv-piper/bin/piper
+Environment=Piper__PythonPath=/home/pi/voixla/.venv-piper/bin/python
 Environment=Piper__VoicesDir=/home/pi/voixla/backend/voices
 Environment=Piper__CacheDir=/home/pi/voixla/backend/cache
 Restart=on-failure

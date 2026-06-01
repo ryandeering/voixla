@@ -187,7 +187,8 @@ function accent(lang: string): string {
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-primary text-decoration-none"
-                >Piper</a>
+                    >Piper</a
+                >
             </span>
         </v-footer>
     </v-app>

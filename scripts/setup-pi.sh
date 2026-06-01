@@ -29,7 +29,7 @@ echo "==> piper: $VENV/bin/piper"
 
 echo
 echo "==> Done. Next:"
-echo "    1. Point the backend at piper:  Piper:ExecutablePath = $VENV/bin/piper"
+echo "    1. Point the backend at python:  Piper:PythonPath = $VENV/bin/python"
 echo "       (the voixla.service unit already sets this; adjust the path if ROOT differs)"
 echo "    2. Build:  cd $ROOT/frontend && npm ci && npm run build"
 echo "               cd $ROOT/backend  && dotnet publish -c Release -r linux-arm64 -o ../publish"

@@ -5,7 +5,9 @@ using Voixla.Api.Dtos;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<PiperOptions>(builder.Configuration.GetSection(PiperOptions.SectionName));
+builder.Services.AddHttpClient("piper", c => c.Timeout = TimeSpan.FromMinutes(2));
 builder.Services.AddSingleton<PiperService>();
+builder.Services.AddHostedService<PiperServerHost>();
 builder.Services.AddHostedService<CacheJanitor>();
 
 const string DevCors = "dev-cors";
@@ -90,7 +92,10 @@ app.MapGet("/api/audio/{hash}.wav", async (string hash, PiperService piper, ILog
     }
 });
 
-app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
+app.MapGet("/api/health", async (PiperService piper, CancellationToken ct) =>
+    await piper.IsServerHealthyAsync(ct)
+        ? Results.Ok(new { status = "ok" })
+        : Results.Json(new { status = "degraded" }, statusCode: StatusCodes.Status503ServiceUnavailable));
 
 app.MapFallbackToFile("index.html");
 
