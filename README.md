@@ -4,6 +4,8 @@
 A self-hosted, fully local text-to-speech web app. Paste some text, pick a voice, and have
 it read back to you. 
 
+![Voixla](misc/example.png)
+
 ## Stack
 
 - **Engine ([piper-tts](https://pypi.org/project/piper-tts/))**
