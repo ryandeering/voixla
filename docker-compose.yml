@@ -1,0 +1,15 @@
+services:
+  voixla:
+    build:
+      context: .
+      args:
+        # Set to /voixla to host at ryandeering.ie/voixla (behind a reverse proxy).
+        BASE_PATH: ""
+    image: voixla
+    container_name: voixla
+    ports:
+      - "5005:5005"
+    # Ephemeral cache on tmpfs; in-app janitor also purges entries older than ~30 min.
+    tmpfs:
+      - /app/cache:size=600m,mode=1777
+    restart: unless-stopped

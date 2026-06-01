@@ -1,0 +1,28 @@
+# systemd unit for Voixla on the Raspberry Pi.
+#
+# Install:
+#   sudo cp scripts/voixla.service /etc/systemd/system/voixla.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now voixla
+#
+# Edit paths and User below to match your setup.
+# Assumes backend published to /home/pi/voixla/publish. Reachable at http://<pi-ip>:5005
+
+[Unit]
+Description=Voixla local text-to-speech
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/voixla/publish
+ExecStart=/home/pi/voixla/publish/Voixla.Api --urls http://0.0.0.0:5005
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=Piper__ExecutablePath=/home/pi/voixla/.venv-piper/bin/piper
+Environment=Piper__VoicesDir=/home/pi/voixla/backend/voices
+Environment=Piper__CacheDir=/home/pi/voixla/backend/cache
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
