@@ -1,0 +1,20 @@
+# Build outputs / dependencies
+**/bin
+**/obj
+**/node_modules
+**/dist
+backend/wwwroot
+
+# Runtime artifacts
+backend/cache
+backend/voices
+.venv-piper
+piper
+piper-mainline
+publish
+
+# Local / VCS / editor
+.git
+.gitignore
+**/*.user
+.DS_Store

@@ -1,0 +1,22 @@
+# .NET
+bin/
+obj/
+*.user
+
+# Node / Vue
+node_modules/
+frontend/dist/
+
+# Built SPA (emitted by `vite build` into the backend) - rebuild on deploy
+backend/wwwroot/
+
+# Runtime artifacts - downloaded/generated, not source
+backend/cache/
+backend/voices/
+piper/
+piper-mainline/
+.venv-piper/
+__pycache__/
+
+# OS
+.DS_Store

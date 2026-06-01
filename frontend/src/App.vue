@@ -149,7 +149,7 @@ function accent(lang: string): string {
                 />
 
                 <v-card v-if="hasChunks" elevation="1" border class="mt-6">
-                    <v-list lines="three" class="py-0">
+                    <v-list class="py-0">
                         <template v-for="(c, i) in chunks" :key="c.hash">
                             <v-divider v-if="i > 0" />
                             <v-list-item
@@ -179,7 +179,7 @@ function accent(lang: string): string {
             </v-container>
         </v-main>
 
-        <v-footer color="surface" border="t" class="justify-center py-4">
+        <v-footer color="surface" border="t" class="flex-grow-0 justify-center py-4">
             <span class="text-caption text-medium-emphasis text-center">
                 © 2026 Ryan Deering · Speech synthesis by
                 <a
