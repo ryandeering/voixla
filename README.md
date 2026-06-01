@@ -6,9 +6,9 @@ it read back to you.
 
 ## Stack
 
-- **Engine ([piper-tts](https://pypi.org/project/piper-tts/)):**
-- **Backend (.NET 10):** 
-- **Frontend (Vue 3 + Vite):**
+- **Engine ([piper-tts](https://pypi.org/project/piper-tts/))**
+- **Backend (.NET 10)** 
+- **Frontend (Vue 3 + Vite)**
 
 ### API
 
