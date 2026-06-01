@@ -20,6 +20,8 @@ public sealed class PiperOptions
 
     public int MaxChunkChars { get; set; } = 350;
 
+    public int FirstChunkMaxChars { get; set; } = 120;
+
     public int MaxTextChars { get; set; } = 100_000;
 
     public int CacheMaxMb { get; set; } = 500;

@@ -58,7 +58,7 @@ app.MapPost("/api/prepare", async (PrepareRequest req, PiperService piper, IOpti
         return Results.BadRequest(new { error = "unknown voice" });
     }
 
-    var pieces = TextChunker.Chunk(req.Text, opts.Value.MaxChunkChars);
+    var pieces = TextChunker.Chunk(req.Text, opts.Value.MaxChunkChars, opts.Value.FirstChunkMaxChars);
 
     var chunks = new List<ChunkDto>(pieces.Count);
     for (var i = 0; i < pieces.Count; i++)

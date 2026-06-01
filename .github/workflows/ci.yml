@@ -46,14 +46,15 @@ jobs:
       - run: npm run type-check
       - run: npm run build
 
-  sidecar:
+  python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m py_compile backend/piper_server.py
+      - run: pip install pylint==4.0.5
+      - run: pylint $(git ls-files '*.py')
 
   docker:
     runs-on: ubuntu-latest

@@ -8,7 +8,7 @@ public static partial class TextChunker
     [GeneratedRegex(@"(?<=[\.\!\?…])\s+")]
     private static partial Regex SentenceBoundary();
 
-    public static IReadOnlyList<string> Chunk(string text, int maxChars)
+    public static IReadOnlyList<string> Chunk(string text, int maxChars, int firstChunkMaxChars = 0)
     {
         maxChars = Math.Max(1, maxChars);
         var chunks = new List<string>();
@@ -74,7 +74,25 @@ public static partial class TextChunker
             }
         }
 
+        if (firstChunkMaxChars > 0 && firstChunkMaxChars < maxChars
+            && chunks.Count > 0 && chunks[0].Length > firstChunkMaxChars)
+        {
+            var (first, rest) = SplitLead(chunks[0], firstChunkMaxChars);
+            chunks[0] = first;
+            if (rest.Length > 0)
+            {
+                chunks.Insert(1, rest);
+            }
+        }
+
         return chunks;
+    }
+
+    private static (string First, string Remainder) SplitLead(string head, int cap)
+    {
+        var first = Chunk(head, cap)[0];
+        var rest = head.Length > first.Length ? head[first.Length..].TrimStart() : string.Empty;
+        return (first, rest);
     }
 
     private static IEnumerable<string> HardWrap(string sentence, int maxChars)
