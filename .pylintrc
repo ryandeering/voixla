@@ -1,6 +1,9 @@
 [MAIN]
 ignored-modules=piper,piper.voice
 
+[BASIC]
+good-names=do_GET,do_POST,voixla-wake-server
+
 [FORMAT]
 max-line-length=100
 
@@ -8,4 +11,5 @@ max-line-length=100
 disable=
     missing-module-docstring,
     missing-class-docstring,
-    missing-function-docstring
+    missing-function-docstring,
+    consider-using-with
