@@ -29,7 +29,7 @@ WORKDIR /app
 
 ENV ASPNETCORE_URLS=http://0.0.0.0:5005 \
     ASPNETCORE_ENVIRONMENT=Production \
-    Piper__ExecutablePath=/opt/piper/bin/piper \
+    Piper__PythonPath=/opt/piper/bin/python3 \
     Piper__VoicesDir=/app/voices \
     Piper__CacheDir=/app/cache \
     PathBase=${BASE_PATH}
