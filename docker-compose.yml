@@ -3,8 +3,8 @@ services:
     build:
       context: .
       args:
-        # Set to /voixla to host at ryandeering.ie/voixla (behind a reverse proxy).
-        BASE_PATH: ""
+        # Hosted at ryandeering.ie/voixla behind the nginx reverse proxy.
+        BASE_PATH: "/voixla"
     image: voixla
     container_name: voixla
     ports:

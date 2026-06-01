@@ -1,0 +1,11 @@
+[Unit]
+Description=Voixla Idle Watcher
+After=docker.service
+
+[Service]
+ExecStart=/home/ryand/Projects/voixla/scripts/voixla-idle-watcher.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

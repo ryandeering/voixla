@@ -72,9 +72,9 @@ function accent(lang: string): string {
         </v-app-bar>
 
         <v-main class="bg-background">
-            <v-container class="py-8" style="max-width: 920px">
+            <v-container class="py-10" style="max-width: 920px">
                 <v-card elevation="1" border>
-                    <v-card-text class="pa-6">
+                    <v-card-text class="pa-8">
                         <v-row dense>
                             <v-col cols="12" sm="7">
                                 <v-select
@@ -103,7 +103,7 @@ function accent(lang: string): string {
 
                         <v-textarea
                             v-model="text"
-                            class="mt-4"
+                            class="mt-6"
                             label="Paste a chapter here…"
                             auto-grow
                             rows="10"
@@ -112,7 +112,7 @@ function accent(lang: string): string {
                             hide-details
                         />
 
-                        <div class="d-flex align-center flex-wrap ga-3 mt-4">
+                        <div class="d-flex align-center flex-wrap ga-3 mt-6">
                             <v-btn
                                 color="primary"
                                 size="large"
@@ -142,13 +142,13 @@ function accent(lang: string): string {
                     v-if="error"
                     type="error"
                     variant="tonal"
-                    class="mt-4"
+                    class="mt-6"
                     :text="error"
                     closable
                     @click:close="error = ''"
                 />
 
-                <v-card v-if="hasChunks" elevation="1" border class="mt-4">
+                <v-card v-if="hasChunks" elevation="1" border class="mt-6">
                     <v-list lines="three" class="py-0">
                         <template v-for="(c, i) in chunks" :key="c.hash">
                             <v-divider v-if="i > 0" />
@@ -178,5 +178,17 @@ function accent(lang: string): string {
                 </v-card>
             </v-container>
         </v-main>
+
+        <v-footer color="surface" border="t" class="justify-center py-4">
+            <span class="text-caption text-medium-emphasis text-center">
+                © 2026 Ryan Deering · Speech synthesis by
+                <a
+                    href="https://github.com/OHF-Voice/piper1-gpl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary text-decoration-none"
+                >Piper</a>
+            </span>
+        </v-footer>
     </v-app>
 </template>
